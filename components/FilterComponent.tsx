@@ -1,5 +1,4 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Button } from "./ui/button";
 
 const FilterComponent = ({
   query,

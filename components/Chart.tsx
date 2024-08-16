@@ -33,8 +33,11 @@ const CapacityPieChart: React.FC<{ data: any[]; title: string }> = ({
 }) => {
   // Preprocess data to count occurrences of each capacity
   const processedData = data.reduce((acc, product) => {
-    const capacity = product.data?.capacity || "Unknown";
-    const existingEntry = acc.find((entry) => entry.capacity === capacity);
+    const capacity =
+      product.data?.capacity?.toLowerCase() ||
+      product.data?.["Capacity"]?.toLowerCase() ||
+      "Unknown";
+    const existingEntry = acc.find((entry: any) => entry.capacity === capacity);
     if (existingEntry) {
       existingEntry.count += 1;
     } else {
@@ -42,7 +45,6 @@ const CapacityPieChart: React.FC<{ data: any[]; title: string }> = ({
     }
     return acc;
   }, [] as { capacity: string; count: number }[]);
-  console.log(processedData);
   return (
     <div className="flex flex-col text-center">
       <p className="text-xl font-bold">{title}</p>
@@ -56,7 +58,7 @@ const CapacityPieChart: React.FC<{ data: any[]; title: string }> = ({
           outerRadius={100}
           fill="#8884d8"
           label>
-          {processedData.map((entry, index) => (
+          {processedData.map((_: any, index: number) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>
@@ -72,9 +74,11 @@ const ColorBarChart: React.FC<{ data: any[]; title: string }> = ({
 }) => {
   // Preprocess data to count occurrences of each color
   const processedData = data.reduce((acc, product) => {
-    const color = product.data?.color || "Unknown";
-    const existingEntry = acc.find((entry) => entry.color === color);
-    console.log(existingEntry);
+    const color =
+      product.data?.color?.toLowerCase() ||
+      product.data?.["Color"]?.toLowerCase() ||
+      "Unknown";
+    const existingEntry = acc.find((entry: any) => entry.color === color);
     if (existingEntry) {
       existingEntry.count += 1;
     } else {

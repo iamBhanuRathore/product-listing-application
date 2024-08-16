@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   const { name = "Default Name", data } = await req.json();
   try {
-    console.log(JSON.stringify({ name: "bhanu" }));
     if (!isJson(data)) {
       return new NextResponse("Not valid Json: data", {
         status: 400,
