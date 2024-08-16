@@ -26,7 +26,7 @@ const AddProduct = ({ getProduct }: { getProduct: () => void }) => {
     setInputs((prev) => ({ ...prev, [name]: value }));
   };
   return (
-    <div className="drop-shadow-md flex w-3/4 gap-x-10 p-5 bg-gray-300 rounded-md my-5 mx-auto">
+    <div className="drop-shadow-md flex gap-x-10 p-5 bg-gray-300 rounded-md my-5">
       <input
         className="primary-input"
         onChange={handelChange}

@@ -4,11 +4,13 @@ import ProductCard from "./ProductCard";
 const ProductList = ({ products }: { products: Product[] }) => {
   return (
     <div>
-      <h2>Product List</h2>
-      <div className="w-3/4 mx-auto flex flex-col gap-y-4">
-        {products.map((product: Product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+      <h2 className="text-xl font-bold py-5">Product List</h2>
+      <div className="flex flex-col gap-y-4">
+        {products.length
+          ? products.map((product: Product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          : "No data"}
       </div>
     </div>
   );

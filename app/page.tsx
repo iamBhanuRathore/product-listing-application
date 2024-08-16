@@ -36,11 +36,11 @@ export default function Home() {
     getProduct();
   }, [query]);
   return (
-    <>
+    <div className="w-3/4 mx-auto">
       <AddProduct getProduct={getProduct} />
       <FilterComponent query={query} setQuery={setQuery} />
       <ProductList products={products} />
-      {/* <Chart /> */}
-    </>
+      <Chart data={products} />
+    </div>
   );
 }

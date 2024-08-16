@@ -17,8 +17,10 @@ const FilterComponent = ({
     const { name, value } = e.target;
     setQuery((prev) => ({ ...prev, [name]: value }));
   };
+  // Should Add Debouncing in the Filter Component
   return (
-    <div className="drop-shadow-md flex w-3/4 gap-x-10 p-5  rounded-md mx-auto">
+    <div className="drop-shadow-md flex gap-x-10 p-5 items-center rounded-md">
+      <p className="text-xl font-bold whitespace-nowrap">Filter :</p>
       <input
         className="primary-input"
         placeholder="Search By Color"
@@ -33,9 +35,6 @@ const FilterComponent = ({
         value={query.capacity}
         name="capacity"
       />
-      {/* <Button className="w-full" variant="default">
-        Search
-      </Button> */}
     </div>
   );
 };
